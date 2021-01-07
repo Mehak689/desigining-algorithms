@@ -1,0 +1,33 @@
+var movingRect , fixedRect;
+
+
+function setup() {
+  createCanvas(800,400);
+  movingRect=createSprite(200, 200, 50, 80);
+  movingRect.shapeColor = "brown";
+  fixedRect=createSprite(400,200,80,30);
+  fixedRect.shapeColor = "brown";
+
+}
+
+function draw() {
+  background(255,255,255);  
+
+  movingRect.x = world.mouseX;
+  movingRect.y = world.mouseY;
+
+  if((movingRect.x - fixedRect.x <fixedRect.width/2 + movingRect.width/2) 
+  && (fixedRect.x - movingRect.x <fixedRect.width/2 + movingRect.width/2)  
+  && (movingRect.y - fixedRect.y <fixedRect.height/2 + movingRect.height/2)
+
+  && (fixedRect.y - movingRect.y <fixedRect.height/2 + movingRect.height/2)){
+    movingRect.shapeColor="red";
+    fixedRect.shapeColor="red";
+  } 
+  else{
+    movingRect.shapeColor = "brown";
+    fixedRect.shapeColor = "brown";
+  }
+
+  drawSprites();
+}
